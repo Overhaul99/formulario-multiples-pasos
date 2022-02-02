@@ -1,0 +1,14 @@
+.ojitos {
+    position: absolute;
+    display: flex;
+    top: 25%;
+    right: 7px;
+    font-size: 20px;
+    color: $azul;
+}
+#ocultar {
+    display: none;
+}
+#mostrar, #ocultar {
+    cursor: pointer;
+}

@@ -1,0 +1,118 @@
+.container .progress-bar {
+    display: flex;
+    margin: 40px 0;
+
+    .paso {
+        text-align: center;
+        width: 100%;
+        position: relative;
+
+        p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #000;
+            margin-bottom: 8px;
+            transition: .2s;
+            display: none;
+
+            @include tablet {
+                display: block;
+            }
+            @include telefono {
+                display: block;
+            }
+            &.active {
+                color: $rojo;
+            }
+        }
+        .num {
+            position: relative;
+            width: 3rem;
+            height: 3rem;
+            border: 2px solid $negro;
+            border-radius: 50%;
+            display: inline-block;
+            font-weight: 500;
+            font-size: 17px;
+            line-height: 25px;
+            transition: .2s;
+            
+            &.active {
+                border-color: $rojo;
+                background: $rojo;
+                span {
+                    display: none;
+                }
+            }
+            span {
+                font-weight: 500;
+                font-size: 17px;
+                line-height: 25px;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+        .check {
+            display: none;
+            position: absolute;
+            left: 50%;
+            top: 75%;
+            font-size: 15px;
+            transform: translate(-50% , -50%);
+            @include mobile-mini {
+                transform: translate(-50% , -130%);
+            }
+            @include mobile-portrait {
+                transform: translate(-50% , -130%);
+            }
+            @include telefono {
+                transform: translate(-50% , -50%);
+            }
+
+            &.active {
+                display: block;
+                color: $blanco;
+            }
+        }
+    }
+}
+.progress-bar .paso .num::before,
+.progress-bar .paso .num::after {
+    position: absolute;
+    content: '';
+    width: 0px;
+    height: 0px;
+    bottom: 0px;
+    right: 0px;
+    @include tablet {
+        width: 44px;
+        height: 3px;
+        bottom: 11px;
+        right: -53px;
+        background: $negro;
+    }
+    @include telefono {
+        width: 44px;
+        height: 3px;
+        bottom: 11px;
+        right: -53px;
+        background: $negro;
+    }
+}
+.progress-bar .paso:last-child .num::before,
+.progress-bar .paso:last-child .num::after {
+    display: none;
+}
+.progress-bar .paso .num.active::after {
+    background: $rojo;
+    animation: mov_Linea 0.3s linear forwards;
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+@keyframes mov_Linea {
+    100% {
+        transform: scaleX(1);
+    }
+}
